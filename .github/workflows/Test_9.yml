@@ -11,4 +11,4 @@ permissions:
 
 jobs:
     Deploy:
-      uses: premisedata/commons-github-actions/.github/workflows/dp_test_python.yml@2.0
+      uses: premisedata/commons-github-actions/.github/workflows/dp_test_python.yml@3.1
