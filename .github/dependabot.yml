@@ -19,5 +19,4 @@ updates:
       - commons-github-actions
     schedule:
       interval: "weekly"
-    allow:
-      - dependency-name: "premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet"
+
