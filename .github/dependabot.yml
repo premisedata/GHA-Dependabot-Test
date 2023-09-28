@@ -26,4 +26,4 @@ updates:
       - "Goblet"
 
     ignore:
-      - dependency-name: "mobile_authenticate_gcloud"
+      - dependency-name: "premisedata/commons-github-actions/.github/workflows/dp_test_python"
