@@ -24,3 +24,6 @@ updates:
           prefix: "Goblet version"
     labels:
       - "Goblet"
+
+    ignore:
+      - dependency-name: "mobile_authenticate_gcloud"
