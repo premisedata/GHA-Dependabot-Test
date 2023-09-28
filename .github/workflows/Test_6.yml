@@ -11,5 +11,5 @@ permissions:
 
 jobs:
     Deploy:
-      uses: premisedata/commons-github-actions/.github/workflows/mobile_authenticate_gcloud.yml@2.0
+      uses: premisedata/commons-github-actions/.github/workflows/mobile_authenticate_gcloud.yml@3.1
 
