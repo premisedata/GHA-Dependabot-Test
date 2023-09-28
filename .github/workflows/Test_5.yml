@@ -1,0 +1,14 @@
+name: "Test"
+
+on:
+  workflow_dispatch:
+
+
+permissions:
+  contents: "write"
+  id-token: "write"
+  pull-requests: write
+
+jobs:
+    Deploy:
+      uses: premisedata/commons-github-actions/.github/workflows/dp_dataform_test_release.yml@3.1
