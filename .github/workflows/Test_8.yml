@@ -1,0 +1,14 @@
+name: "Test"
+
+on:
+  workflow_dispatch:
+
+
+permissions:
+  contents: "write"
+  id-token: "write"
+  pull-requests: write
+
+jobs:
+    Deploy:
+      uses: premisedata/commons-github-actions/.github/workflows/mobile_authenticate_gcloud.yml@2.0
