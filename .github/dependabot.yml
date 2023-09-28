@@ -26,4 +26,4 @@ updates:
       - "Goblet"
 
     ignore:
-      - dependency-name: "premisedata/commons-github-actions/.github/workflows/dp_test_python"
+      - dependency-name: "dp_test_python"
