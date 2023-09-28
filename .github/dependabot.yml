@@ -19,4 +19,8 @@ updates:
       - commons-github-actions
     schedule:
       interval: "weekly"
-
+    commit-message:
+          # Prefix all commit messages with "npm: "
+          prefix: "Goblet version"
+    labels:
+      - "Goblet GHA"
