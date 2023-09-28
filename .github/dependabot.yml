@@ -20,4 +20,4 @@ updates:
     schedule:
       interval: "weekly"
     allow:
-      - dependency-name: "dp_test_python"
+      - dependency-name: "dp_deploy_goblet"
