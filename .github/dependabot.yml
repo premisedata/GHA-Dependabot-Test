@@ -26,4 +26,4 @@ updates:
       - "Goblet"
 
     allow:
-      - dependency-name: "premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml"
+      - dependency-name: "dp_deploy_goblet*"
