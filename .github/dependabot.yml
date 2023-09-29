@@ -26,4 +26,4 @@ updates:
       - "Goblet"
 
     allow:
-      - dependency-name: "workflows/dp_deploy_goblet"
+      - dependency-name: ".github/workflows/dp_deploy_goblet"
