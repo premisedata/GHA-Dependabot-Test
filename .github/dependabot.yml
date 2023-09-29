@@ -24,6 +24,3 @@ updates:
           prefix: "Goblet version"
     labels:
       - "Goblet"
-
-    allow:
-      - dependency-name: "dp_test_python"
