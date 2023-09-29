@@ -11,4 +11,4 @@ permissions:
 
 jobs:
     Deploy:
-      uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@2.0
+      uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@3.1
