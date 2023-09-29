@@ -24,3 +24,6 @@ updates:
           prefix: "Goblet version"
     labels:
       - "Goblet"
+
+    allow:
+      - dependency-name: "workflows/dp_deploy_goblet"
