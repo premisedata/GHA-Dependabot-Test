@@ -20,9 +20,10 @@ RUN apt-get update && apt-get install -y google-cloud-sdk
 RUN echo $GAC
 RUN echo ${PYTHON_VERSION}
 
+COPY . /
+
 RUN gcloud auth activate-service-account --key-file=$GAC
 
-COPY . /
 
 
 
