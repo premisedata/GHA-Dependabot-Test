@@ -18,7 +18,7 @@ RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -
 RUN apt-get update && apt-get install -y google-cloud-sdk
 
 RUN echo $GAC
-COPY $GAC /tmp/creds.json
+COPY $GAC /tmp/$GAC
 
 RUN echo ${PYTHON_VERSION}
 
