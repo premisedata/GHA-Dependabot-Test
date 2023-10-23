@@ -97,6 +97,7 @@ runs:
         python-version: ${{ inputs.python_version }}
     - run: |
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
+        gcloud auth configure-docker
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
           -t custom-image $GITHUB_ACTION_PATH
