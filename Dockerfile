@@ -1,4 +1,6 @@
 ARG PYTHON_VERSION=3.9.7
+ARG GOOGLE_APPLICATION_CREDENTIALS="test.json"
+
 FROM python:${PYTHON_VERSION}-slim-buster
 
 RUN apt-get update 

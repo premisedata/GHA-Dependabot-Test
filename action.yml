@@ -97,7 +97,8 @@ runs:
       with:
         python-version: ${{ inputs.python_version }}
     - run: |
-        echo ${{ steps.auth.output.credentials_file_path }}
+        echo $GOOGLE_APPLICATION_CREDENTIALS
+        cat $GOOGLE_APPLICATION_CREDENTIALS
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
