@@ -1,7 +1,8 @@
 ARG PYTHON_VERSION=3.9.7
-ARG GAC="test.json"
+
 
 FROM python:${PYTHON_VERSION}-slim-buster
+ARG GAC="test.json"
 
 RUN apt-get update 
 
