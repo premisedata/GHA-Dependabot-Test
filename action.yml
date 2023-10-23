@@ -103,6 +103,7 @@ runs:
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
           --build-arg GAC="${{ steps.auth.outputs.credentials_file_path }}" \
+          --progress=plain
           -t custom-image $GITHUB_ACTION_PATH
         docker run custom-image \
           ${{ inputs.project }} \
