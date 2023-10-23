@@ -100,6 +100,7 @@ runs:
     - run: |
         echo ${{ steps.auth.outputs.credentials_file_path }}
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
+        mkdir $GITHUB_ACTION_PATH/tmp
         cp ${{ steps.auth.outputs.credentials_file_path }} $GITHUB_ACTION_PATH/tmp/creds.json
         ls -allh /tmp/creds.json
         docker build \
