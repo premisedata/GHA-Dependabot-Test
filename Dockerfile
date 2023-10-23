@@ -1,5 +1,5 @@
 ARG PYTHON_VERSION=3.9.7
-ARG GOOGLE_APPLICATION_CREDENTIALS="test.json"
+ARG GAC="test.json"
 
 FROM python:${PYTHON_VERSION}-slim-buster
 
@@ -15,12 +15,15 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
 
-RUN apt-get update && apt-get install -y google-cloud-sdk
-
 RUN echo ${GOOGLE_APPLICATION_CREDENTIALS}
 RUN echo ${PYTHON_VERSION}
 
-RUN gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
+RUN apt-get update && apt-get install -y google-cloud-sdk
+
+RUN echo ${GAC}
+RUN echo ${PYTHON_VERSION}
+
+RUN gcloud auth activate-service-account --key-file=${GAC}
 
 COPY . /
 

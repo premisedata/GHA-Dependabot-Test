@@ -102,7 +102,7 @@ runs:
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
-          --build-arg GOOGLE_APPLICATION_CREDENTIALS=${{ steps.auth.outputs.credentials_file_path }} \
+          --build-arg GAC=${{ steps.auth.outputs.credentials_file_path }} \
           -t custom-image $GITHUB_ACTION_PATH
         docker run custom-image \
           ${{ inputs.project }} \
