@@ -69,7 +69,11 @@ inputs:
   service_account:
     description: filename and path for requirement file
     required: true
-
+    default: test
+  apt_packages:
+    description: filename and path for requirement file
+    required: false
+    default: ""
 outputs:
   openapispec:
     description: "The openapispec that is generated if it exists"
@@ -83,8 +87,8 @@ runs:
       name: "Authenticate to Google Cloud"
       uses: "google-github-actions/auth@v1.0.0"
       with:
-        workload_identity_provider: "projects/${{ inputs.wip_project_id }}/locations/global/workloadIdentityPools/${{ inputs.wip }}/providers/${{ inputs.wip_provider }}"
-        service_account: "${{ inputs.service_account }}@${{ inputs.wip_project_name }}.iam.gserviceaccount.com"
+        workload_identity_provider: projects/${{ inputs.wip_project_id }}/locations/global/workloadIdentityPools/${{ inputs.wip }}/providers/${{ inputs.wip_provider }}
+        service_account: ${{ inputs.service_account }}@${{ inputs.wip_project_name }}.iam.gserviceaccount.com
     - name: Setup Cloud SDK
       uses: google-github-actions/setup-gcloud@v1.1.0
     - name: Setup Python
