@@ -65,7 +65,9 @@ branding:
 runs:
   using: "composite"
   steps:
+    
     - run: |
+        gcloud auth configure-docker
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
