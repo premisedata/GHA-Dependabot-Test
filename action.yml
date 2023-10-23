@@ -73,7 +73,7 @@ runs:
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
           -t custom-image $GITHUB_ACTION_PATH
-        docker run -e GCP_ACCESS_TOKEN=$ACCESS_TOKEN custom-image \
+        docker run -v $GOOGLE_APPLICATION_CREDENTIALS:/tmp/keys/key.json -e GOOGLE_APPLICATION_CREDENTIALS=/tmp/keys/key.json custom-image \
           ${{ inputs.project }} \
           ${{ inputs.location }} \
           "/deploy-tmp/${{ inputs.goblet-path }}" \

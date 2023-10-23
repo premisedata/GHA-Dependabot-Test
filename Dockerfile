@@ -15,13 +15,11 @@ RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -
 
 RUN apt-get update && apt-get install -y google-cloud-sdk
 
-COPY . /
-
-ENV GCP_ACCESS_TOKEN=${GCP_ACCESS_TOKEN}
-
-RUN gcloud auth activate-service-account --key-file=${GCP_ACCESS_TOKEN}
+RUN gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
 
 COPY . /
+
+
 
 
 
