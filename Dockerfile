@@ -1,6 +1,5 @@
 ARG PYTHON_VERSION=3.9.7
 
-
 FROM python:${PYTHON_VERSION}-slim-buster
 ARG GAC="test.json"
 
