@@ -101,7 +101,7 @@ runs:
         echo ${{ steps.auth.outputs.credentials_file_path }}
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         docker build \
-          --build-arg PYTHON_VERSION=${{ inputs.python_version }} \ 
+          --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
           --build-arg GOOGLE_APPLICATION_CREDENTIALS=${{ steps.auth.outputs.credentials_file_path }} \
           -t custom-image $GITHUB_ACTION_PATH
         docker run custom-image \
