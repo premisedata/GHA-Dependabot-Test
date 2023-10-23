@@ -101,7 +101,7 @@ runs:
         echo ${{ steps.auth.outputs.credentials_file_path }}
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         cp ${{ steps.auth.outputs.credentials_file_path }} /tmp/creds.json
-        ls -allh /tmp/cred.json
+        ls -allh /tmp/creds.json
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
           --build-arg GAC="/tmp/creds.json" \
