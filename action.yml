@@ -101,11 +101,12 @@ runs:
         echo ${{ steps.auth.outputs.credentials_file_path }}
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         mkdir $GITHUB_ACTION_PATH/tmp
-        cp ${{ steps.auth.outputs.credentials_file_path }} $GITHUB_ACTION_PATH/tmp/creds.json
+        val=$(basename ${{ steps.auth.outputs.credentials_file_path }})
+        cp ${{ steps.auth.outputs.credentials_file_path }} $GITHUB_ACTION_PATH/tmp/$val
         ls -allh $GITHUB_ACTION_PATH/tmp/creds.json
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
-          --build-arg GAC="/tmp/creds.json" \
+          --build-arg GAC="/tmp/$val" \
           --progress=plain \
           -t custom-image $GITHUB_ACTION_PATH
         docker run custom-image \
