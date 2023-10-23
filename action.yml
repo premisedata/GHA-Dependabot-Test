@@ -87,6 +87,7 @@ runs:
       name: "Authenticate to Google Cloud"
       uses: "google-github-actions/auth@v1.0.0"
       with:
+        export_environment_variables: true
         create_credentials_file: true
         workload_identity_provider: projects/${{ inputs.wip_project_id }}/locations/global/workloadIdentityPools/${{ inputs.wip }}/providers/${{ inputs.wip_provider }}
         service_account: ${{ inputs.service_account }}@${{ inputs.wip_project_name }}.iam.gserviceaccount.com
@@ -97,13 +98,12 @@ runs:
       with:
         python-version: ${{ inputs.python_version }}
     - run: |
-        echo $GOOGLE_APPLICATION_CREDENTIALS
-        cat $GOOGLE_APPLICATION_CREDENTIALS
+        echo ${{ steps.auth.outputs.credentials_file_path }}
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
           -t custom-image $GITHUB_ACTION_PATH
-        docker run -v $GOOGLE_APPLICATION_CREDENTIALS:/tmp/keys/key.json -e GOOGLE_APPLICATION_CREDENTIALS=/tmp/keys/key.json custom-image \
+        docker run -e GOOGLE_APPLICATION_CREDENTIALS=${{ steps.auth.outputs.credentials_file_path }} custom-image \
           ${{ inputs.project }} \
           ${{ inputs.location }} \
           "/deploy-tmp/${{ inputs.goblet-path }}" \
