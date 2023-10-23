@@ -17,10 +17,10 @@ RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -
 
 RUN apt-get update && apt-get install -y google-cloud-sdk
 
-RUN echo ${GAC}
+RUN echo $GAC
 RUN echo ${PYTHON_VERSION}
 
-RUN gcloud auth activate-service-account --key-file=${GAC}
+RUN gcloud auth activate-service-account --key-file=$GAC
 
 COPY . /
 
