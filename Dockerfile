@@ -15,9 +15,6 @@ RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.c
 
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
 
-RUN echo ${GOOGLE_APPLICATION_CREDENTIALS}
-RUN echo ${PYTHON_VERSION}
-
 RUN apt-get update && apt-get install -y google-cloud-sdk
 
 RUN echo ${GAC}
