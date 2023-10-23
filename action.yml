@@ -103,7 +103,7 @@ runs:
         mkdir $GITHUB_ACTION_PATH/tmp
         val=$(basename ${{ steps.auth.outputs.credentials_file_path }})
         cp ${{ steps.auth.outputs.credentials_file_path }} $GITHUB_ACTION_PATH/tmp/$val
-        ls -allh $GITHUB_ACTION_PATH/tmp/creds.json
+        ls -allh $GITHUB_ACTION_PATH/tmp/$val
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
           --build-arg GAC="/tmp/$val" \
