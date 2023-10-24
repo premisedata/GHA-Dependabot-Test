@@ -1,7 +1,7 @@
 ARG PYTHON_VERSION=3.9.7
 
 FROM python:${PYTHON_VERSION}-slim-buster
-ARG GOOGLE_TOKEN="test"
+ARG GAC="test"
 
 RUN apt-get update 
 
