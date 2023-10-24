@@ -93,12 +93,13 @@ runs:
         service_account: ${{ inputs.service_account }}@${{ inputs.wip_project_name }}.iam.gserviceaccount.com
     - name: Setup Cloud SDK
       uses: google-github-actions/setup-gcloud@v1.1.0
-      run: 'gcloud auth list --filter=status:ACTIVE --format="value(account)"'
+
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
         python-version: ${{ inputs.python_version }}
     - run: |
+        gcloud auth list --filter=status:ACTIVE --format="value(account)"
         echo ${{ steps.auth.outputs.credentials_file_path }}
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         mkdir $GITHUB_ACTION_PATH/tmp
