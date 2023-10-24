@@ -92,7 +92,8 @@ runs:
         workload_identity_provider: projects/${{ inputs.wip_project_id }}/locations/global/workloadIdentityPools/${{ inputs.wip }}/providers/${{ inputs.wip_provider }}
         service_account: ${{ inputs.service_account }}@${{ inputs.wip_project_name }}.iam.gserviceaccount.com
     - name: Setup Cloud SDK
-      uses: google-github-actions/setup-gcloud@v0
+      uses: google-github-actions/setup-gcloud@v1.1.0
+      run: 'gcloud auth list --filter=status:ACTIVE --format="value(account)"'
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
