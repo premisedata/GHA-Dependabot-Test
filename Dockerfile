@@ -24,7 +24,7 @@ COPY . /
 
 RUN cat $GAC | base64 -d > creds.json
 
-RUN gcloud auth activate-service-account --token-file=creds.json
+RUN gcloud auth activate-service-account --key-file=creds.json
 
 
 
