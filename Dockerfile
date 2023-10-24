@@ -22,6 +22,7 @@ COPY $GAC /tmp/$GAC
 
 RUN cat /tmp/$GAC
 
+
 RUN echo ${PYTHON_VERSION}
 
 COPY . /
