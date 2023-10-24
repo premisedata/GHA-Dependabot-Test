@@ -1,7 +1,7 @@
 ARG PYTHON_VERSION=3.9.7
 
 FROM python:${PYTHON_VERSION}-slim-buster
-ARG GOOGLE_TOKEN="test.json"
+ARG GOOGLE_TOKEN="test"
 
 RUN apt-get update 
 
@@ -17,14 +17,14 @@ RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -
 
 RUN apt-get update && apt-get install -y google-cloud-sdk
 
-RUN printf "$GOOGLE_TOKEN" | base64 -d > /tmp/creds.json
 
 RUN echo ${PYTHON_VERSION}
 
 COPY . /
 
-RUN gcloud auth activate-service-account deploy-cloudrun-cicd@premise-places-dev.iam.gserviceaccount.com --key-file=/tmp/creds.json
+RUN cat $GAC | base64 -d > /tmp/creds.json
 
+RUN gcloud auth activate-service-account --key-file=/tmp/creds.json
 
 
 
