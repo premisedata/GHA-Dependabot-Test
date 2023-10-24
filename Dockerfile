@@ -26,7 +26,7 @@ RUN echo ${PYTHON_VERSION}
 
 COPY . /
 
-RUN gcloud auth activate-service-account --key-file=/tmp/$GAC
+RUN gcloud auth activate-service-account
 
 
 

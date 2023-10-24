@@ -111,7 +111,7 @@ runs:
           --build-arg GAC="$val" \
           --progress=plain \
           -t custom-image $GITHUB_ACTION_PATH
-        docker run custom-image \
+        docker run -v custom-image \
           ${{ inputs.project }} \
           ${{ inputs.location }} \
           "/deploy-tmp/${{ inputs.goblet-path }}" \
