@@ -103,7 +103,8 @@ runs:
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         echo ${{ steps.auth.outputs.access_token }} >> $GITHUB_ACTION_PATH/creds.json
         ls -allh $GITHUB_ACTION_PATH/creds.json
-        cat $GITHUB_ACTION_PATH/creds.json | base64 >> creds_b64.json
+        cat $GITHUB_ACTION_PATH/creds.json | base64 >> $GITHUB_ACTION_PATH/creds_b64.json
+        ls -allh $GITHUB_ACTION_PATH/creds_b64.json
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
           --build-arg GAC="creds_b64.json" \
