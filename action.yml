@@ -100,19 +100,16 @@ runs:
       with:
         python-version: ${{ inputs.python_version }}
     - run: |
-        echo ${{ steps.auth.outputs.credentials_file_path }}
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
-        mkdir $GITHUB_ACTION_PATH/tmp
-        val=$(basename ${{ steps.auth.outputs.credentials_file_path }})
         echo ${{ steps.auth.outputs.access_token }} >> $GITHUB_ACTION_PATH/creds.json
         ls -allh $GITHUB_ACTION_PATH/creds.json
-        cat $GITHUB_ACTION_PATH/creds.json | base64 >> $GOOGLE_TOKEN
+        cat $GITHUB_ACTION_PATH/creds.json | base64 >> creds_b64.json
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
-          --build-arg GAC=$GOOGLE_TOKEN \
+          --build-arg GAC="creds_b64.json" \
           --progress=plain \
           -t custom-image $GITHUB_ACTION_PATH
-        docker run custom-image \
+        docker run -v : custom-image \
           ${{ inputs.project }} \
           ${{ inputs.location }} \
           "/deploy-tmp/${{ inputs.goblet-path }}" \
