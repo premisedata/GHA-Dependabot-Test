@@ -106,9 +106,10 @@ runs:
         val=$(basename ${{ steps.auth.outputs.credentials_file_path }})
         echo ${{ steps.auth.outputs.access_token }} >> $GITHUB_ACTION_PATH/creds.json
         ls -allh $GITHUB_ACTION_PATH/creds.json
+        cat $GITHUB_ACTION_PATH/creds.json | base64 >> $GOOGLE_TOKEN
         docker build \
           --build-arg PYTHON_VERSION=${{ inputs.python_version }} \
-          --build-arg GAC="creds.json" \
+          --build-arg GAC=$GOOGLE_TOKEN \
           --progress=plain \
           -t custom-image $GITHUB_ACTION_PATH
         docker run custom-image \
