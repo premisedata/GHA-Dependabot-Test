@@ -22,9 +22,9 @@ RUN echo ${PYTHON_VERSION}
 
 COPY . /
 
-RUN cat $GAC | base64 -d > /tmp/creds.json
+RUN cat $GAC | base64 -d > creds.json
 
-RUN gcloud auth activate-service-account --key-file=/tmp/creds.json
+RUN gcloud auth activate-service-account --token-file=creds.json
 
 
 
