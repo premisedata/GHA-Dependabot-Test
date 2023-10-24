@@ -20,6 +20,8 @@ RUN apt-get update && apt-get install -y google-cloud-sdk
 RUN echo $GAC
 COPY $GAC /tmp/$GAC
 
+RUN cat /tmp/$GAC
+
 RUN echo ${PYTHON_VERSION}
 
 COPY . /
