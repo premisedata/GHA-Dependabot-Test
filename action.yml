@@ -99,7 +99,6 @@ runs:
       with:
         python-version: ${{ inputs.python_version }}
     - run: |
-        gcloud auth list --filter=status:ACTIVE --format="value(account)"
         echo ${{ steps.auth.outputs.credentials_file_path }}
         cp -r . $GITHUB_ACTION_PATH/deploy-tmp
         mkdir $GITHUB_ACTION_PATH/tmp

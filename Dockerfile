@@ -26,7 +26,7 @@ RUN echo ${PYTHON_VERSION}
 
 COPY . /
 
-RUN gcloud auth activate-service-account
+RUN gcloud auth activate-service-account deploy-cloudrun-cicd@premise-places-dev.iam.gserviceaccount.com --key-file=/tmp/$GAC
 
 
 
