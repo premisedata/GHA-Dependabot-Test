@@ -89,6 +89,7 @@ runs:
       with:
         export_environment_variables: true
         create_credentials_file: true
+        token_format: "access_token"
         workload_identity_provider: projects/${{ inputs.wip_project_id }}/locations/global/workloadIdentityPools/${{ inputs.wip }}/providers/${{ inputs.wip_provider }}
         service_account: ${{ inputs.service_account }}@${{ inputs.wip_project_name }}.iam.gserviceaccount.com
     - name: Setup Cloud SDK
