@@ -23,10 +23,24 @@ jobs:
         minor_pattern: (MINOR)
         version_format: ${major}.${minor}.${patch}
         debug: true
-    - name: Releasing
+    - name: Tagging
       run: |
-        git tag ${{ steps.increment_version.outputs.version }}
+        git tag ${{ steps.increment_version.outputs.version }} \
         git push origin ${{ steps.increment_version.outputs.version }}
+    - name: Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      with:
+        tag_name: ${{ steps.increment_version.outputs.version }}
+        release_name: Release ${{ steps.increment_version.outputs.version }}
+        body: |
+          Changes in this Release
+          - First Change
+          - Second Change
+        draft: false
+        prerelease: false
         
         
         
