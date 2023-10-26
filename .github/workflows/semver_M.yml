@@ -26,12 +26,12 @@ jobs:
         version_format: ${major}.${minor}.${patch}
         debug: true
     - name: Tagging
-      if: ${{ steps.increment_version.outputs.version_type == "major" }}
+      if: ${{ steps.increment_version.outputs.version_type == 'major' }}
       run: |
         git tag ${{ steps.increment_version.outputs.version }}
         git push origin ${{ steps.increment_version.outputs.version }}
     - name: Release
-      if: ${{ steps.increment_version.outputs.version_type == "major" }}
+      if: ${{ steps.increment_version.outputs.version_type == 'major' }}
       id: create_release
       uses: actions/create-release@v1
       env:
