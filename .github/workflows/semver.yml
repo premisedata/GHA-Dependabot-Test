@@ -10,17 +10,23 @@ jobs:
     name: First 1
     runs-on: ubuntu-20.04
     steps:
-      - name: checkout
-        uses: actions/checkout@v3.5.0
-        with:
-          fetch-depth: 0
-      - name: increment version
-        id: db-version
-        uses: paulhatch/semantic-version@v5.3.0
-        with:
-          tag_prefix: ""
-          major_pattern: (MAJOR)
-          minor_pattern: (MINOR)
-          version_format: ${major}.${minor}.${patch}
-          debug: true
-
+    - name: checkout
+      uses: actions/checkout@v3.5.0
+      with:
+        fetch-depth: 0
+    - name: increment version
+      id: increment_version
+      uses: paulhatch/semantic-version@v5.3.0
+      with:
+        tag_prefix: ""
+        major_pattern: (MAJOR)
+        minor_pattern: (MINOR)
+        version_format: ${major}.${minor}.${patch}
+        debug: true
+    - name: Releasing
+      run: |
+        git tag ${{ steps.increment_version.outputs.new-version }}
+        git push origin ${{ steps.increment_version.outputs.new-version }}
+        
+        
+        
