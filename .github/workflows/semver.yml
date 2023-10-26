@@ -7,7 +7,7 @@ on:
 
 jobs:
   Deploy:
-    name: First
+    name: First 1
     runs-on: ubuntu-20.04
     steps:
       - name: checkout
