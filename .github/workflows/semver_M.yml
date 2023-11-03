@@ -5,13 +5,13 @@ on:
     branches:
       - main
       - CHANGELOG.md
-      -
+
 jobs:
   Deploy:
     name: Major release
     runs-on: ubuntu-20.04
     steps:
-    - name: checkout
+    - name: Checkout
       uses: actions/checkout@v3.5.0
       with:
         fetch-depth: 0
@@ -34,14 +34,11 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ steps.increment_version.outputs.version }}
         release_name: Release ${{ steps.increment_version.outputs.version }}
-        body: |
-          Changes in this Release
-          - First Change
-          - Second Change
+        body: ${{ github.event.head_commit.message }}
         draft: false
         prerelease: false
 
