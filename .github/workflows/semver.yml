@@ -1,4 +1,4 @@
-name: Semver
+name: Semantic Versioning - Minor/Patch
 
 on:
   push:
