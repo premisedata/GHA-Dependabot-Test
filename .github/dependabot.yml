@@ -38,3 +38,5 @@ updates:
       prefix: "[COMMON-GITHUB-ACTIONS]"
     labels:
       - "Goblet"
+    allow:
+      - dependency-name: premisedata/commons-github-actions
