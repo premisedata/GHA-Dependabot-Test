@@ -21,7 +21,7 @@ version: 2
 registries:
   commons-github-actions:
     type: git
-    url: https://github.com
+    url: https://github.com/premisedata
     username: x-access-token
     password: ${{secrets.ACCESS_TO_GITHUB}}
 
