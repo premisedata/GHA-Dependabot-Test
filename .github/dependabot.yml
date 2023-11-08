@@ -1,0 +1,12 @@
+version: 2
+updates:
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-name: "dp_deploy_goblet.yml*"
+    commit-message:
+      prefix: "[DP_DEPLOY_GOBLET]"
+    open-pull-requests-limit: 2

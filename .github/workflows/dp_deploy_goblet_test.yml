@@ -1,0 +1,127 @@
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'project'
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - qa
+          - prod
+
+permissions:
+  contents: 'read'
+  id-token: 'write'
+
+name: Build and Deploy
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+  DeployDev:
+    name: Deploying to Dev
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'dev'
+    needs: Test
+    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.1.1
+    with:
+      stage: dev
+      project: premise-dev
+      region: us-central1
+      wip: gh-deploy-dev
+      wip_provider: gh-dev-provider
+      wip_project_id: 721816000966
+      wip_project_name: premise-dev
+      service_account: deploy-cloudrun-cicd
+      python_version: 3.8.12
+      upgrade_python_setuptools: true
+      apt_packages: "build-essential"
+  NotifyDev:
+    name: Notify Ops Deploys
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'dev'
+    needs: DeployDev
+    env:
+      SLACK_HOOK_OPS_DEPLOY: ${{ secrets.SLACK_HOOK_OPS_DEPLOY }}
+    steps:
+      - name: Send Slack Message ✉️
+        uses: premisedata/slack-build-notifications@v1.2
+        with:
+          outcome: 'success'
+          project: "premise-dev"
+          build: ${{ github.run_id }}
+          webhook: ${{ env.SLACK_HOOK_OPS_DEPLOY }}
+          repo: ${{ github.repository }}
+          version: ${{ github.ref }}
+
+  DeployQA:
+    name: Deploying to QA
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'qa')
+    needs: Test
+    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.1.1
+    with:
+      stage: qa
+      project: premise-qa
+      region: us-central1
+      wip: gh-deploy-dev
+      wip_provider: gh-dev-provider
+      wip_project_id: 721816000966
+      wip_project_name: premise-dev
+      service_account: deploy-cloudrun-cicd
+      python_version: 3.8.12
+      upgrade_python_setuptools: true
+  NotifyQA:
+    name: Notify Ops Deploys
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'qa'
+    needs: DeployQA
+    env:
+      SLACK_HOOK_OPS_DEPLOY: ${{ secrets.SLACK_HOOK_OPS_DEPLOY }}
+    steps:
+      - name: Send Slack Message ✉️
+        uses: premisedata/slack-build-notifications@v1.2
+        with:
+          outcome: 'success'
+          project: "premise-qa"
+          build: ${{ github.run_id }}
+          webhook: ${{ env.SLACK_HOOK_OPS_DEPLOY }}
+          repo: ${{ github.repository }}
+          version: ${{ github.ref }}
+
+  DeployProd:
+    name: Deploying to Prod
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'prod'
+    needs: Test
+    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.0.0
+    with:
+      stage: prod
+      project: premise-prod
+      region: us-central1
+      wip: gh-deploy-dev
+      wip_provider: gh-dev-provider
+      wip_project_name: premise-dev
+      wip_project_id: 721816000966
+      service_account: deploy-cloudrun-cicd
+      python_version: 3.8.12
+      upgrade_python_setuptools: true
+  NotifyProd:
+    name: Notify Prod Deploys
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'prod'
+    needs: DeployProd
+    env:
+      SLACK_HOOK_OPS_DEPLOY: ${{ secrets.SLACK_HOOK_PROD_DEPLOY }}
+    steps:
+      - name: Send Slack Message ✉️
+        uses: premisedata/slack-build-notifications@v1.2
+        with:
+          outcome: 'success'
+          project: "premise-prod"
+          build: ${{ github.run_id }}
+          webhook: ${{ env.SLACK_HOOK_OPS_DEPLOY }}
+          repo: ${{ github.repository }}
+          version: ${{ github.ref }}
