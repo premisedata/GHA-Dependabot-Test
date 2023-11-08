@@ -5,8 +5,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    allow:
-      - dependency-name: "dp_deploy_goblet*"
     commit-message:
       prefix: "[DP_DEPLOY_GOBLET]"
     open-pull-requests-limit: 2
