@@ -96,7 +96,7 @@ jobs:
     name: Deploying to Prod
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'prod'
     needs: Test
-    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.1.0
+    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.1.1
     with:
       stage: prod
       project: premise-prod
