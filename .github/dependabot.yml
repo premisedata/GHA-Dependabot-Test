@@ -35,6 +35,8 @@ updates:
       interval: "weekly"
     commit-message:
       # Prefix all commit messages with "npm: "
-      prefix: "Goblet version"
+      prefix: "[COMMON-GITHUB-ACTIONS]"
     labels:
       - "Goblet"
+    allow:
+      - dependency-name: premisedata/commons-github-actions
