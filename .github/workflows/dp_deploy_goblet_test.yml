@@ -49,7 +49,7 @@ jobs:
       SLACK_HOOK_OPS_DEPLOY: ${{ secrets.SLACK_HOOK_OPS_DEPLOY }}
     steps:
       - name: Send Slack Message ✉️
-        uses: premisedata/slack-build-notifications@v1.2
+        uses: premisedata/slack-build-notifications@v1.3
         with:
           outcome: 'success'
           project: "premise-dev"
@@ -83,7 +83,7 @@ jobs:
       SLACK_HOOK_OPS_DEPLOY: ${{ secrets.SLACK_HOOK_OPS_DEPLOY }}
     steps:
       - name: Send Slack Message ✉️
-        uses: premisedata/slack-build-notifications@v1.2
+        uses: premisedata/slack-build-notifications@v1.3
         with:
           outcome: 'success'
           project: "premise-qa"
@@ -117,7 +117,7 @@ jobs:
       SLACK_HOOK_OPS_DEPLOY: ${{ secrets.SLACK_HOOK_PROD_DEPLOY }}
     steps:
       - name: Send Slack Message ✉️
-        uses: premisedata/slack-build-notifications@v1.2
+        uses: premisedata/slack-build-notifications@v1.3
         with:
           outcome: 'success'
           project: "premise-prod"
