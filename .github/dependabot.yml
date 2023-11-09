@@ -1,5 +1,3 @@
-
-
 version: 2
 registries:
   commons-github-actions:
@@ -17,9 +15,6 @@ updates:
     schedule:
       interval: "weekly"
     commit-message:
-      # Prefix all commit messages with "npm: "
-      prefix: "[COMMON-GITHUB-ACTIONS]"
-    labels:
-      - "Goblet"
+      prefix: "[COMMONS-GITHUB-ACTIONS]"
     allow:
       - dependency-name: premisedata/commons-github-actions
