@@ -6,7 +6,7 @@ registries:
     type: git
     url: https://github.com
     username: x-access-token
-    password: ${{secrets.GITHUB_TOKEN}}
+    password: ${{secrets.ACCESS_TO_GITHUB}}
 
 updates:
 
