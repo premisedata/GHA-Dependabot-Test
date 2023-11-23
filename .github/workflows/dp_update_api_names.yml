@@ -27,4 +27,5 @@ jobs:
     - name: Install gcloud beta
       run: gcloud components install beta
     - name: List services
-      run: gcloud services list --available --filter="name:*.googleapis.com"
+      #run: gcloud services list --available --filter="name:*.googleapis.com"
+      run: gcloud config get-value project
