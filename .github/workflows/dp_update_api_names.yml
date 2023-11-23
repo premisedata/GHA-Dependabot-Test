@@ -1,3 +1,4 @@
+name: Update api names list
 on:
   workflow_dispatch:
 
