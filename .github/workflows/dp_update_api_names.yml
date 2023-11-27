@@ -21,7 +21,7 @@ jobs:
         workload_identity_provider: "projects/963616447866/locations/global/workloadIdentityPools/gh-deploy-dev-portal-rd/providers/gh-dev-portal-provider-rd"
         service_account: "sa-developer-portal-rd@premise-developer-portal-rd.iam.gserviceaccount.com"
     - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v0.2.0
+      uses: google-github-actions/setup-gcloud@v0.6.2
       with:
         version: '355.0.0'
     - name: Install gcloud beta
