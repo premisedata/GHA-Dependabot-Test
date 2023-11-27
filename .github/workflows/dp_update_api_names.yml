@@ -35,4 +35,4 @@ jobs:
 #    - name: Runing python list
 #      run: python test_api_list.py
     - name: List services
-      run: gcloud config set account sa-developer-portal-rd; gcloud services list --available --filter="name:*.googleapis.com"
+      run: gcloud services list --available --filter="name:*.googleapis.com"
