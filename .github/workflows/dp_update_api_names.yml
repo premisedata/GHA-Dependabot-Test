@@ -27,10 +27,12 @@ jobs:
         version: '363.0.0'
     - name: Install gcloud beta
       run: gcloud components install beta
-    - name: Install gcloud beta
+    - name: Listing auths
       run:  gcloud auth list --filter=status:ACTIVE --format="value(account)"
-    - name: python setup
+    - name: Python setup
       uses: actions/setup-python@v4
+    - name: Install google api
+      run: pip install google-api-python-client
     - name: Runing python list
       run: python test_api_list.py
     - name: List services
