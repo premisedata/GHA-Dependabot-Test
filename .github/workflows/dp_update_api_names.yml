@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v1'
+      uses: 'google-github-actions/auth@v0'
       with:
         workload_identity_provider: "projects/963616447866/locations/global/workloadIdentityPools/gh-deploy-dev-portal-rd/providers/gh-dev-portal-provider-rd"
         service_account: "sa-developer-portal-rd@premise-developer-portal-rd.iam.gserviceaccount.com"
@@ -29,11 +29,11 @@ jobs:
       run: gcloud components install beta
     - name: Listing auths
       run:  gcloud auth list --filter=status:ACTIVE --format="value(account)"
-    - name: Python setup
-      uses: actions/setup-python@v4
-    - name: Install google api
-      run: pip install google-api-python-client
-    - name: Runing python list
-      run: python test_api_list.py
+#    - name: Python setup
+#      uses: actions/setup-python@v4
+#    - name: Install google api
+#      run: pip install google-api-python-client
+#    - name: Runing python list
+#      run: python test_api_list.py
     - name: List services
       run: gcloud beta services list
