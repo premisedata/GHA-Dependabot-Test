@@ -11,18 +11,18 @@ jobs:
     defaults:
       run:
         shell: bash
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v0.4.3'
+      uses: 'google-github-actions/auth@v0'
       with:
         workload_identity_provider: "projects/963616447866/locations/global/workloadIdentityPools/gh-deploy-dev-portal-rd/providers/gh-dev-portal-provider-rd"
         service_account: "sa-developer-portal-rd@premise-developer-portal-rd.iam.gserviceaccount.com"
 
     - name: Set up Cloud SDK
-      uses: 'google-github-actions/setup-gcloud@v0.2.0'
+      uses: 'google-github-actions/setup-gcloud@v0'
 
     - name: Install gcloud beta
       run: gcloud components install beta
