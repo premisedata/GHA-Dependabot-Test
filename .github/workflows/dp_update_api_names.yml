@@ -19,7 +19,7 @@ jobs:
       uses: 'google-github-actions/auth@v1.0.0'
       with:
         workload_identity_provider: "projects/963616447866/locations/global/workloadIdentityPools/gh-deploy-dev-portal-rd/providers/gh-dev-portal-provider-rd"
-        service_account: "sa-developer-portal-rd@premise-developer-portal-rd.iam.gserviceaccount.com"
+        service_account: "deploy-cloudrun-cicd@premise-developer-portal-rd.iam.gserviceaccount.com"
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1.1.0
       with:
@@ -35,4 +35,4 @@ jobs:
 #    - name: Runing python list
 #      run: python test_api_list.py
     - name: List services
-      run: gcloud resources list
+      run: gcloud services list
