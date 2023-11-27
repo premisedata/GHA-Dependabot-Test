@@ -24,8 +24,8 @@ jobs:
       uses: google-github-actions/setup-gcloud@v0.6.2
       with:
         version: '363.0.0'
-#    - name: Install gcloud beta
-#      run: gcloud components install beta
+    - name: Install gcloud beta
+      run: gcloud components install beta
     - name: Install gcloud beta
       run:  gcloud auth list --filter=status:ACTIVE --format="value(account)"
     - name: List services
