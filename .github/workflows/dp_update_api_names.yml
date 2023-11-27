@@ -23,7 +23,7 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v0.6.2
       with:
-        version: '355.0.0'
+        version: '363.0.0'
     - name: Install gcloud beta
       run: gcloud components install beta
     - name: List services
