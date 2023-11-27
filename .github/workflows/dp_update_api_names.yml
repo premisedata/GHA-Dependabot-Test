@@ -29,5 +29,5 @@ jobs:
     - name: Install gcloud beta
       run:  gcloud auth list --filter=status:ACTIVE --format="value(account)"
     - name: List services
-      run: gcloud beta services list --available --filter="name:*.googleapis.com"
+      run: gcloud services list --available --filter="name:*.googleapis.com"
       #run: gcloud config get-value project
