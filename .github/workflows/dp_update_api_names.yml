@@ -19,7 +19,7 @@ jobs:
       uses: 'google-github-actions/auth@v1'
       with:
         workload_identity_provider: "projects/963616447866/locations/global/workloadIdentityPools/gh-deploy-dev-portal-rd/providers/gh-dev-portal-provider-rd"
-        service_account: "deploy-cloudrun-cicd@premise-developer-portal-rd.iam.gserviceaccount.com"
+        service_account: "sa-developer-portal-rd@premise-developer-portal-rd.iam.gserviceaccount.com"
 
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1.1.0
@@ -34,7 +34,7 @@ jobs:
     - name: Create key
       run: gcloud iam service-accounts keys create test.json
     - name: Auth with file
-      run: gcloud auth activate-service-account --key-file=test.json
+      run: gcloud auth activate-service-account --key-file=test.json --iam-account="sa-developer-portal-rd@premise-developer-portal-rd.iam.gserviceaccount.com"
     - name: Python setup
       uses: actions/setup-python@v4
     - name: Install google api
