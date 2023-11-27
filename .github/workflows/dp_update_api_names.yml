@@ -29,11 +29,11 @@ jobs:
       run: gcloud components install beta
     - name: Listing auths
       run:  gcloud auth list --filter=status:ACTIVE --format="value(account)"
-    - name: Python setup
-      uses: actions/setup-python@v4
-    - name: Install google api
-      run: pip install google-api-python-client
-    - name: Runing python list
-      run: python test_api_list.py
+#    - name: Python setup
+#      uses: actions/setup-python@v4
+#    - name: Install google api
+#      run: pip install google-api-python-client
+#    - name: Runing python list
+#      run: python test_api_list.py
     - name: List services
       run: gcloud services list --available --filter="name:*.googleapis.com"
