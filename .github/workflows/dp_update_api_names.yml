@@ -27,7 +27,7 @@ jobs:
         version: '363.0.0'
     - name: Install gcloud beta
       run: gcloud components install beta
-    - id: 'auth'
+    - id: 'auth2'
       name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v1'
       with:
