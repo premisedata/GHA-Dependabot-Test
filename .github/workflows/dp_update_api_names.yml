@@ -35,4 +35,4 @@ jobs:
 #    - name: Runing python list
 #      run: python test_api_list.py
     - name: List services
-      run: gcloud services list --available --filter="name:*.googleapis.com"
+      run: gcloud services list --available --filter="name:*.googleapis.com" --project=premise-developer-portal-rd
