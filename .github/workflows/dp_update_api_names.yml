@@ -33,6 +33,7 @@ jobs:
     - name: Install google api
       run: pip install google-api-python-client
     - name: Runing python list
-      run: python test_api_list.py
+      run: > 
+        python test_api_list.py
 #    - name: List services
 #      run: gcloud beta services list
