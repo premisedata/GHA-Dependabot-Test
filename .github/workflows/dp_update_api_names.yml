@@ -32,9 +32,9 @@ jobs:
     - name: Show GOOGLE_APPLICATION_CREDENTIALS
       run: echo $GOOGLE_APPLICATION_CREDENTIALS
     - name: Create key
-      run: gcloud iam service-accounts keys create
+      run: gcloud iam service-accounts keys create test.json
     - name: Auth with file
-      run: gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+      run: gcloud auth activate-service-account --key-file=test.json
     - name: Python setup
       uses: actions/setup-python@v4
     - name: Install google api
