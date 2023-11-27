@@ -31,6 +31,8 @@ jobs:
       run:  gcloud auth list --filter=status:ACTIVE --format="value(account)"
     - name: Show GOOGLE_APPLICATION_CREDENTIALS
       run: echo $GOOGLE_APPLICATION_CREDENTIALS
+    - name: Create key
+      run: gcloud iam service-accounts keys create
     - name: Auth with file
       run: gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
     - name: Python setup
