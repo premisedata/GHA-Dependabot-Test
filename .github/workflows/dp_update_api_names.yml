@@ -35,5 +35,6 @@ jobs:
     - name: Runing python list
       run: > 
         python test_api_list.py
-#    - name: List services
-#      run: gcloud beta services list
+    - name: List services
+      run: > 
+          gcloud beta services list
