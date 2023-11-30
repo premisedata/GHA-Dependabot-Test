@@ -44,3 +44,7 @@ jobs:
     - name: Actual list files
       run: >
           cat ./packages/backend/public/apis.txt
+    - name: Create branch
+      run: >
+          git checkout -B new_branch; git add ./packages/backend/public/apis.txt; git commit -m "TEST"; git push;
+          
