@@ -40,4 +40,5 @@ jobs:
 
     - name: List services
       run: > 
-          gcloud beta services list
+          gcloud beta services list --available
+    - name: Actual list files
