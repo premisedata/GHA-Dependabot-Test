@@ -42,3 +42,5 @@ jobs:
       run: > 
           gcloud beta services list --available
     - name: Actual list files
+      run: >
+          ls
