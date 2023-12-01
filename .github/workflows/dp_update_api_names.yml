@@ -80,3 +80,4 @@ jobs:
        title: Update api names
        body: Update api names list for developer portal Enable GCP Service API
        branch: main
+       delete-branch: true
