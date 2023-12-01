@@ -43,7 +43,7 @@ jobs:
           gcloud beta services list --available --format='value(NAME)' --filter="NAME:googleapis" > ./packages/backend/public/apis.txt
     - name: Actual list files
       run: >
-          cat ./packages/backend/public/apis.txt
+          cat ./packages/backend/public/apis.txt > apis.tmp
     - name: Create branch update-api-name-list
       run: >
           git checkout -B update-api-name-list
@@ -53,6 +53,12 @@ jobs:
     - name: Config git user name
       run: >
           git config --local user.name "github-actions[bot]"
+    - name: Remove old file
+      run: >
+          git rm ./packages/backend/public/apis.txt
+    - name: Create updated api.txt file
+      run: >
+          cat apis.tmp > ./packages/backend/public/apis.txt
     - name: Add updated api.txt file
       run: >
           git add ./packages/backend/public/apis.txt; git commit -m "[UPDATE] api names list for developer portal"
