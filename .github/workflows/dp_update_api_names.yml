@@ -60,11 +60,14 @@ jobs:
     - name: Add updated api.txt file and commit
       run: >
           git add ./packages/backend/public/apis.txt
+
+    - name: Commit allowing empty changes
+      run: >
           git commit --allow-empty -m "[UPDATE] api names list for developer portal"
 
-    - name: Set upstream git branch name
+    - name: Set upstream git branch name to update-api-name-list
       run: >
-        git push --set-upstream origin update-api-name-list;
+        git push --set-upstream origin update-api-name-list
 
     - name: Push to update-api-name-list
       run: >
