@@ -72,12 +72,8 @@ jobs:
     - name: Push to update-api-name-list
       run: >
         git push
-
-    - name: Create Pull Request
-      uses: 'peter-evans/create-pull-request@v5'
-      with:
-       commit-message: Update api names list
-       title: Update api names
-       body: Update api names list for developer portal Enable GCP Service API
-       branch: main
-       delete-branch: true
+    - name: create pull request
+      run: >
+        gh pr create -B main -H update-api-name-list --title '[Created by Github action]' --body 'Update api names list for developer portal Enable GCP Service API template'
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
