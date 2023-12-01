@@ -1309,17 +1309,3 @@ TITLE: Google Workspace Events API
 NAME: workstations.googleapis.com
 TITLE: Cloud Workstations API
 
-NAME: youtube.googleapis.com
-TITLE: YouTube Data API v3
-
-NAME: youtubeanalytics.googleapis.com
-TITLE: YouTube Analytics API
-
-NAME: youtubeembeddedplayer.googleapis.com
-TITLE: YouTube Embedded Player API
-
-NAME: youtubeoembed.googleapis.com
-TITLE: YouTube oEmbed API
-
-NAME: youtubereporting.googleapis.com
-TITLE: YouTube Reporting API
