@@ -27,7 +27,7 @@ jobs:
     name: Deploying to Dev
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'dev'
     needs: Test
-    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.0.0
+    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.1.5
     with:
       stage: dev
       project: premise-dev
@@ -62,7 +62,7 @@ jobs:
     name: Deploying to QA
     if: (github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'qa')
     needs: Test
-    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.0.0
+    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.1.5
     with:
       stage: qa
       project: premise-qa
@@ -96,7 +96,7 @@ jobs:
     name: Deploying to Prod
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.project == 'prod'
     needs: Test
-    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.0.0
+    uses: premisedata/commons-github-actions/.github/workflows/dp_deploy_goblet.yml@1.1.5
     with:
       stage: prod
       project: premise-prod
