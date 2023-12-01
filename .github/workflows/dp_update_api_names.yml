@@ -37,13 +37,9 @@ jobs:
       run: gcloud config set account gha-enable-apis@premise-developer-portal-rd.iam.gserviceaccount:com
     - name: Install google api
       run: pip install google-api-python-client
-
-    - name: List services
+    - name: Generate temporal api list file
       run: > 
-          gcloud beta services list --available --format='value(NAME)' --filter="NAME:googleapis" > apis.tmp
-    - name: Actual list files
-      run: >
-          cat ./packages/backend/public/apis.txt > apis.tmp
+          gcloud beta services list --available --format='value(NAME)' --filter="NAME:googleapis" > ./packages/backend/public/apis.tmp
     - name: Create branch update-api-name-list
       run: >
           git checkout -B update-api-name-list
@@ -58,7 +54,7 @@ jobs:
           git rm ./packages/backend/public/apis.txt
     - name: Create updated api.txt file
       run: >
-          cat apis.tmp > ./packages/backend/public/apis.txt
+          cat ./packages/backend/public/apis.tmp > ./packages/backend/public/apis.txt
     - name: Add updated api.txt file
       run: >
           git add ./packages/backend/public/apis.txt; git commit -m "[UPDATE] api names list for developer portal"
