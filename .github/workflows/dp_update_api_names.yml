@@ -44,7 +44,28 @@ jobs:
     - name: Actual list files
       run: >
           cat ./packages/backend/public/apis.txt
-    - name: Create branch
+    - name: Create branch update-api-name-list
       run: >
-          git checkout -B new_branch;git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com";git config --local user.name "github-actions[bot]";git add ./packages/backend/public/apis.txt; git commit -m "TEST";git push --set-upstream origin new_branch;git push;
-          
+          git checkout -B update-api-name-list
+    - name: Config git email
+      run: >
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    - name: Config git user name
+      run: >
+          git config --local user.name "github-actions[bot]"
+    - name: Add updated api.txt file
+      run: >
+          git add ./packages/backend/public/apis.txt; git commit -m "[UPDATE] api names list for developer portal"
+    - name: Set upstream git branch name
+      run: >
+        git push --set-upstream origin update-api-name-list;
+    - name: Push to update-api-name-list
+      run: >
+        git push
+    - name: Create Pull Request
+      uses: 'peter-evans/create-pull-request@v5'
+      with:
+       commit-message: Update api names list
+       title: Update api names
+       body: Update api names list for developer portal Enable GCP Service API
+       branch: update-api-name-list
