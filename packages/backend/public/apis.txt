@@ -113,6 +113,7 @@ cloudsearch.googleapis.com
 cloudshell.googleapis.com
 cloudsupport.googleapis.com
 cloudtasks.googleapis.com
+cloudtrace.googleapis.com
 cloudvideosearch.googleapis.com
 composer.googleapis.com
 compute.googleapis.com
@@ -136,6 +137,7 @@ css.googleapis.com
 customsearch.googleapis.com
 datacatalog.googleapis.com
 dataconnectors.googleapis.com
+dataflow.googleapis.com
 dataform.googleapis.com
 datafusion.googleapis.com
 datalabeling.googleapis.com
