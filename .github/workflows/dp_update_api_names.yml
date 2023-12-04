@@ -2,7 +2,7 @@ name: Update api names list
 on:
   workflow_dispatch:
   schedule:
-    - cron: '19,20,21,22,23,24 * * * *'
+    - cron: '00 * * * *'
 jobs:
   Update:
     permissions:
