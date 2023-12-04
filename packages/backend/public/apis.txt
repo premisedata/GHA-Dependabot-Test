@@ -436,3 +436,8 @@ workloadcertificate.googleapis.com
 workloadmanager.googleapis.com
 workspaceevents.googleapis.com
 workstations.googleapis.com
+youtube.googleapis.com
+youtubeanalytics.googleapis.com
+youtubeembeddedplayer.googleapis.com
+youtubeoembed.googleapis.com
+youtubereporting.googleapis.com
