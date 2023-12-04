@@ -39,7 +39,7 @@ jobs:
 
     - name: Create branch update-api-name-list
       run: >
-          git checkout -B update-api-name-list
+          git checkout -B update-api-name-list origin/main
 
     - name: Config git email
       run: >
