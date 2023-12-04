@@ -67,7 +67,7 @@ jobs:
 
     - name: Set upstream git branch name to update-api-name-list
       run: >
-        git push --set-upstream origin update-api-name-list
+        git push --set-upstream origin update-api-name-list --force
 
     - name: Push to update-api-name-list
       run: >
