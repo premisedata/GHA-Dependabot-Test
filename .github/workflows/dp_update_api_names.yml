@@ -18,12 +18,8 @@ jobs:
       name: 'Authenticate to Google Cloud'
       uses: 'google-github-actions/auth@v1'
       with:
-#        workload_identity_provider: "projects/102075874751/locations/global/workloadIdentityPools/gh-places-deploy-dev/providers/gh-places-dev-provider"
-#        service_account: "deploy-cloudrun-cicd@premise-places-dev.iam.gserviceaccount.com"
         workload_identity_provider: "projects/963616447866/locations/global/workloadIdentityPools/gh-deploy-dev-portal-rd/providers/gh-dev-portal-provider-rd"
         service_account: "gha-enable-apis@premise-developer-portal-rd.iam.gserviceaccount.com"
-#         workload_identity_provider: "projects/98058317567/locations/global/workloadIdentityPools/gh-deploy-data-platform-dev/providers/gh-data-platform-dev-provider"
-#         service_account: "deploy-cloudrun-cicd@premise-data-platform-dev.iam.gserviceaccount.com"
     - name: Set up Cloud SDK
       uses: 'google-github-actions/setup-gcloud@v1'
 
@@ -74,6 +70,6 @@ jobs:
         git push
     - name: create pull request
       run: >
-        gh pr create -B main -H update-api-name-list --title '[Created by Github action]' --body 'Update api names list for developer portal Enable GCP Service API template'
+        gh pr create -B main -H update-api-name-list --title '[Created by Github action] Update api names list' --body 'Update api names list for developer portal Enable GCP Service API template'
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
