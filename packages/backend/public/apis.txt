@@ -92,6 +92,7 @@ chronicle.googleapis.com
 civicinfo.googleapis.com
 classroom.googleapis.com
 cloud.googleapis.com
+cloudaicompanion.googleapis.com
 cloudapis.googleapis.com
 cloudasset.googleapis.com
 cloudbilling.googleapis.com
@@ -296,6 +297,7 @@ networktopology.googleapis.com
 notebooks.googleapis.com
 ondemandscanning.googleapis.com
 opsconfigmonitoring.googleapis.com
+optimization.googleapis.com
 orgpolicy.googleapis.com
 osconfig.googleapis.com
 oslogin.googleapis.com
