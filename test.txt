@@ -1,1 +1,2 @@
 my change
+my change for MAJOR MINOR COMMIT MESSAGE first
