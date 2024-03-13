@@ -52,7 +52,7 @@ on:
       poetry_version:
         required: false
         type: string
-        default: "1.1.14"
+        default: "1.8.2"
       apt_packages:
         required: false
         type: string
