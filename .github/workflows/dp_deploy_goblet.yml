@@ -1,0 +1,174 @@
+on:
+  workflow_call:
+    inputs:
+      stage:
+        required: false
+        type: string
+      project:
+        required: true
+        type: string
+      wip_project_id:
+        required: true
+        type: string
+      wip_project_name:
+        required: true
+        type: string
+      service_account:
+        required: true
+        type: string
+      wip:
+        required: true
+        type: string
+      wip_provider:
+        required: true
+        type: string
+      region:
+        required: true
+        type: string
+      goblet_path:
+        required: false
+        type: string
+        default: "."
+      goblet_command:
+        required: false
+        type: string
+        default: ""
+      post_status:
+        required: false
+        type: string
+        default: "false"
+      python_version:
+        required: false
+        type: string
+        default: "3.8.10"
+      artifact_auth:
+        required: false
+        type: string
+        default: "no"
+      poetry:
+        required: false
+        type: string
+        default: "no"
+      poetry_version:
+        required: false
+        type: string
+        default: "1.1.14"
+      apt_packages:
+        required: false
+        type: string
+        default: ""
+      upgrade_python_setuptools:
+        required: false
+        type: boolean
+        default: false
+      requirements:
+        required: false
+        type: string
+        default: "requirements.txt"
+
+    secrets:
+      SLACK_HOOK_OPS_DEPLOY:
+        required: false
+        description: "Slack webhook for deployment notifications"
+jobs:
+  DeployGoblet:
+    name: Deploy Goblet Application
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3.5.0
+      - id: "auth"
+        name: "Authenticate to Google Cloud"
+        uses: "google-github-actions/auth@v1.0.0"
+        with:
+          workload_identity_provider: "projects/${{ inputs.wip_project_id }}/locations/global/workloadIdentityPools/${{ inputs.wip }}/providers/${{ inputs.wip_provider }}"
+          service_account: "${{ inputs.service_account }}@${{ inputs.wip_project_name }}.iam.gserviceaccount.com"
+      - name: Setup Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1.1.0
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ inputs.python_version }}
+      - name: upgrade pip setuptools wheel
+        if: ${{ inputs.upgrade_python_setuptools }}
+        run: |
+          pip install --upgrade pip setuptools wheel
+      - name: goblet deploy python 3.8
+        if: ${{ startsWith( inputs.python_version, '3.8' ) }}
+        uses: goblet/goblet-github-actions@v3.4-python3.8
+        id: deploy3_8
+        with:
+          project: ${{ inputs.project }}
+          location: ${{ inputs.region }}
+          stage: ${{ inputs.stage }}
+          goblet-path: ${{ inputs.goblet_path }}
+          artifact-auth: ${{ inputs.artifact_auth }}
+          poetry: ${{ inputs.poetry }}
+          poetry_version: ${{ inputs.poetry_version }}
+          requirements: ${{ inputs.requirements }}
+          command: ${{ inputs.goblet_command }}
+          apt_packages: ${{ inputs.apt_packages }}
+
+      - name: goblet deploy python 3.9
+        if: ${{ startsWith( inputs.python_version, '3.9' ) }}
+        uses: goblet/goblet-github-actions@v3.4-python3.9
+        id: deploy3_9
+        with:
+          project: ${{ inputs.project }}
+          location: ${{ inputs.region }}
+          stage: ${{ inputs.stage }}
+          goblet-path: ${{ inputs.goblet_path }}
+          artifact-auth: ${{ inputs.artifact_auth }}
+          poetry: ${{ inputs.poetry }}
+          poetry_version: ${{ inputs.poetry_version }}
+          requirements: ${{ inputs.requirements }}
+          command: ${{ inputs.goblet_command }}
+          apt_packages: ${{ inputs.apt_packages }}
+
+      - name: goblet deploy python 3.10
+        if: ${{ startsWith( inputs.python_version, '3.10' ) }}
+        uses: goblet/goblet-github-actions@v3.4-python3.10
+        id: deploy3_10
+        with:
+          project: ${{ inputs.project }}
+          location: ${{ inputs.region }}
+          stage: ${{ inputs.stage }}
+          goblet-path: ${{ inputs.goblet_path }}
+          artifact-auth: ${{ inputs.artifact_auth }}
+          poetry: ${{ inputs.poetry }}
+          poetry_version: ${{ inputs.poetry_version }}
+          requirements: ${{ inputs.requirements }}
+          command: ${{ inputs.goblet_command }}
+          apt_packages: ${{ inputs.apt_packages }}
+
+      - name: goblet deploy python 3.11
+        if: ${{ startsWith( inputs.python_version, '3.11' ) }}
+        uses: diegoandresdiazespinoza/goblet-github-actions@main
+        id: deploy3_11
+        with:
+          project: ${{ inputs.project }}
+          location: ${{ inputs.region }}
+          stage: ${{ inputs.stage }}
+          goblet-path: ${{ inputs.goblet_path }}
+          artifact-auth: ${{ inputs.artifact_auth }}
+          poetry: ${{ inputs.poetry }}
+          poetry_version: ${{ inputs.poetry_version }}
+          requirements: ${{ inputs.requirements }}
+          command: ${{ inputs.goblet_command }}
+          apt_packages: ${{ inputs.apt_packages }}
+
+      - name: goblet deploy python default version
+        if: ${{ inputs.python_version == '' }}
+        uses: goblet/goblet-github-actions@v3.4-python3.11
+        id: deploy_default
+        with:
+          project: ${{ inputs.project }}
+          location: ${{ inputs.region }}
+          stage: ${{ inputs.stage }}
+          goblet-path: ${{ inputs.goblet_path }}
+          artifact-auth: ${{ inputs.artifact_auth }}
+          poetry: ${{ inputs.poetry }}
+          poetry_version: ${{ inputs.poetry_version }}
+          requirements: ${{ inputs.requirements }}
+          command: ${{ inputs.goblet_command }}
+          apt_packages: ${{ inputs.apt_packages }}
