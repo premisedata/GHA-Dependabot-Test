@@ -143,7 +143,7 @@ jobs:
 
       - name: goblet deploy python 3.11
         if: ${{ startsWith( inputs.python_version, '3.11' ) }}
-        uses: diegoandresdiazespinoza/goblet-github-actions@main
+        uses: diegoandresdiazespinoza/goblet-github-actions@python3.11
         id: deploy3_11
         with:
           project: ${{ inputs.project }}
