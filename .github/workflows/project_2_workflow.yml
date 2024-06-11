@@ -2,7 +2,8 @@ name: "Project_2 Workflow"
 on:
   pull_request:
       types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
-
+      paths:
+        - project_2/**
 jobs:
   # Enforces the update of a changelog file on every pull request
   Changelog:
