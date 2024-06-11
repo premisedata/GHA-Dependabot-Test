@@ -1,0 +1,22 @@
+name: "Different Changelog Path"
+on:
+  pull_request:
+      types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
+
+jobs:
+  # Enforces the update of a changelog file on every pull request
+  Changelog:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: dangoslen/changelog-enforcer@v2
+      with:
+        changeLogPath: 'project_1/changelog.md'
+
+  Job_1:
+    runs-on: ubuntu-latest
+    needs: Changelog
+    steps:
+      - name: Making Mock Job for Project_1
+        run: echo "test"
+
